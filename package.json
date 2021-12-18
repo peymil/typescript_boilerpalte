@@ -8,7 +8,7 @@
     "build": "tsc",
     "test": "jest",
     "lint": "eslint && tsc --noEmit",
-    "lint:fix": "tsc --noEmit && eslint --fix && prettier --write",
+    "lint:fix": "tsc --noEmit && eslint --cache --fix && prettier --write",
     "lint:staged": "lint-staged"
   },
   "author": "",
@@ -19,9 +19,8 @@
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "eslint": "^8.5.0",
-    "eslint-config-airbnb": "^19.0.2",
-    "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.0",
     "jest": "^27.4.3",
@@ -35,6 +34,9 @@
     "dotenv": "^10.0.0"
   },
   "lint-staged": {
-    "*.ts": "yarn lint:fix"
+    "*.ts": [
+      "yarn lint:fix",
+      "git add"
+    ]
   }
 }
